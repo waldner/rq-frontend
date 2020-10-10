@@ -2,7 +2,7 @@
 Submit jobs to [Redis Queue](https://python-rq.org) from any language using an HTTP API.
 
 # WARNING: work in progress.
-# WARNING: I made this after reading just two Flask tutorials. It's surely ugly and can be made better.
+### WARNING: I made this after reading just two Flask tutorials. It's surely ugly and can be made better.
 
 This is a quick hack thrown together to let non-python apps and service submit jobs to RQ.
 
