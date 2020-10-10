@@ -8,6 +8,12 @@ This is a quick hack thrown together to let non-python apps and service submit j
 
 # Getting started
 
+Build the docker image:
+
+```
+docker build -t waldner/rq-frontend .
+```
+
 Create a `.env` file with the following content:
 
 ```

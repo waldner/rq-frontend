@@ -1,0 +1,14 @@
+version: '3.5'
+services:
+  rqfrontend:
+    hostname: rqfrontend
+    container_name: rqfrontend
+    image: waldner/rqfrontend 
+    environment:
+      - TZ=Europe/Rome
+      - RQ_FRONTEND_REDIS_URL=${RQ_FRONTEND_REDIS_URL}
+    ports:
+      - "${HTTP_ADDR:-127.0.0.1}:${HTTP_PORT:-8080}:80"
+    restart: always
+    volumes: 
+      - ./app:/app
