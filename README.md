@@ -39,6 +39,8 @@ job = q.enqueue('tasks.sampletask', result_ttl = 0, args = [60], kwargs = {'arg1
 ```
 
 ## Retrieve the status of a job:
+
+```
 $ curl -s http://192.168.0.1:4356/info?job_id=a70eedf2-f121-4a02-bf45-5acd82ec9bc7 | jq -r .
 {
   "status": "started",
