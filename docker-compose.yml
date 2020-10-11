@@ -1,9 +1,9 @@
 version: '3.5'
 services:
   rqfrontend:
-    hostname: rqfrontend
-    container_name: rqfrontend
-    image: waldner/rqfrontend 
+    hostname: rq-frontend
+    container_name: rq-frontend
+    image: waldner/rq-frontend 
     environment:
       - TZ=Europe/Rome
       - RQ_FRONTEND_REDIS_URL=${RQ_FRONTEND_REDIS_URL}
