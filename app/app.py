@@ -14,7 +14,7 @@ app.config["DEBUG"] = True
 
 def check_req(req):
 
-    if 'task' not in req:
+    if 'task' not in req or 'params' not in req:
         return False
 
     return True
