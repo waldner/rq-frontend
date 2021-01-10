@@ -33,8 +33,14 @@ def home():
         return json.dumps({'status': 'invalid JSON'})
 
     # we have valid json here
+    
+    # get queue name, if any
+    queue_name = 'default'
+    if 'queue' in req:
+        queue_name = req['queue']
+
     conn = Redis(REDIS_URL)
-    q = Queue(connection = conn)
+    q = Queue(queue_name, connection = conn)
 
     job = q.enqueue(req['task'], **req['params'])
 

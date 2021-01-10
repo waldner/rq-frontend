@@ -41,7 +41,14 @@ $ curl http://192.168.0.1:4356 -d '{"task":"tasks.sampletask", "params": {"resul
 {"status": "submitted", "job_id": "a70eedf2-f121-4a02-bf45-5acd82ec9bc7"}
 ```
 
-The payload JSON must contain two keys: `task` with the name of the task to run as recognized by the workers, and `params` with the values to be passed to the worker when the job is enqueued. In the above example, the `params` part causes the following server-side invocation to enqueue the job:
+Optionally, a queue name can be specified:
+
+```
+$ curl http://192.168.0.1:4356 -d '{"queue": "high", "task":"tasks.sampletask", "params": {"result_ttl": 0, "args": [60], "kwargs": { "arg1": "hello", "arg2": "world" }}'
+{"status": "submitted", "job_id": "a70e2d42-f121-4602-bf45-5a7d828c91c7"}
+```
+
+The payload JSON must contain two keys: `task` with the name of the task to run as recognized by the workers, and `params` with the values to be passed to the worker when the job is enqueued. The `queue` key is optional, and if missing the default queue named `default` is used to submit the job. In the above example, the `params` part causes the following server-side invocation to enqueue the job:
 
 ```
 ...
