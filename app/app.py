@@ -35,12 +35,15 @@ def home():
     # we have valid json here
     
     # get queue name, if any
-    queue_name = 'default'
+    queue_name = DEFAULT_QUEUE
     if 'queue' in req:
         queue_name = req['queue']
 
     conn = Redis(REDIS_URL)
     q = Queue(queue_name, connection = conn)
+
+    if 'result_ttl' not in req['params']:
+        req['params']['job_ttl'] = DEFAULT_JOB_TTL
 
     job = q.enqueue(req['task'], **req['params'])
 
@@ -79,5 +82,8 @@ def info():
 
 
 REDIS_URL = os.environ['RQ_FRONTEND_REDIS_URL']
+DEFAULT_JOB_TTL = os.environ['RQ_FRONTEND_DEFAULT_JOB_TTL']  # used if not specified in request
+DEFAULT_QUEUE = os.environ['RQ_FRONTEND_DEFAULT_QUEUE']      # used if not specified in request
+
 app.run(host='0.0.0.0', port=80)
 
