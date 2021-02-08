@@ -66,6 +66,8 @@ def info():
     job.refresh()
 
     result = { 'status': job.get_status(),
+               'worker_name': job.worker_name,
+               'origin': job.origin,
                'func_name': job.func_name,
                'args': job.args,
                'meta': job.meta,
