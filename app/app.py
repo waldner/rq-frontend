@@ -80,7 +80,7 @@ def info():
                'ended_at': date_format(job.ended_at),
                'exc_info': job.exc_info }
 
-    return json.dumps(result)
+    return json.dumps(result, default=str)
 
 
 REDIS_URL = os.environ['RQ_FRONTEND_REDIS_URL']
