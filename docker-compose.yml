@@ -9,6 +9,7 @@ services:
       - RQ_FRONTEND_REDIS_URL=${RQ_FRONTEND_REDIS_URL}
       - RQ_FRONTEND_DEFAULT_JOB_TTL=${RQ_FRONTEND_DEFAULT_JOB_TTL:-3600}
       - RQ_FRONTEND_DEFAULT_QUEUE=${RQ_FRONTEND_DEFAULT_QUEUE:-default}
+      - CORS=${CORS-false}
     ports:
       - "${HTTP_ADDR:-127.0.0.1}:${HTTP_PORT:-8080}:80"
     restart: always

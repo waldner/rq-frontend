@@ -1,5 +1,6 @@
 import flask
 from flask import request
+from flask_cors import CORS
 
 import json
 import os
@@ -10,6 +11,9 @@ from redis import Redis
 import redis.exceptions
 
 app = flask.Flask(__name__)
+if os.environ['CORS'] == 'true':
+  CORS(app)
+
 app.config["DEBUG"] = True
 
 def check_req(req):
